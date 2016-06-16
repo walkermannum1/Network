@@ -17,16 +17,17 @@ import java.net.URL;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
-    public static final int SHOW_RESPOSE = 0;
+    public static final int SHOW_RESPONSE = 0;
     private Button sendRequest;
     private TextView responseText;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case SHOW_RESPOSE:
+                case SHOW_RESPONSE:
                     String response = (String) msg.obj;//handle UI,show response
                     responseText.setText(response);
             }
+            super.handleMessage(msg);
         }
     };
 
@@ -65,7 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                         response.append(line);
                     }
                     Message message = new Message();
-                    message.what = SHOW_RESPOSE;
+                    message.what = SHOW_RESPONSE;
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
