@@ -67,6 +67,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     }
                     Message message = new Message();
                     message.what = SHOW_RESPONSE;
+                    message.obj = response.toString();
+                    handler.sendMessage(message);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
