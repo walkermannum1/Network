@@ -16,7 +16,7 @@ public class HttpUtil {
 
     public static void sendHttpRequest(final Context context, final String address, final HttpCallbackListener listener) {
         if (!isNetworkAvailable()) {
-            Toast.makeText(context, "network is unavaliable", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MyApplication.getContext(), "network is unavaliable", Toast.LENGTH_SHORT).show();
             return;
         }
         new Thread(new Runnable() {
