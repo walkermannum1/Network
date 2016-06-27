@@ -1,5 +1,8 @@
 package com.example.user.network;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,7 +14,11 @@ import java.net.URL;
  */
 public class HttpUtil {
 
-    public static void sendHttpRequest(final String address, final HttpCallbackListener listener) {
+    public static void sendHttpRequest(final Context context, final String address, final HttpCallbackListener listener) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(context, "network is unavaliable", Toast.LENGTH_SHORT).show();
+            return;
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -47,5 +54,10 @@ public class HttpUtil {
                 }
             }
         }).start();
+    }
+
+    private static boolean isNetworkAvailable() {
+        //check the network
+        return true;
     }
 }
